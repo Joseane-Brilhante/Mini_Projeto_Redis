@@ -12,6 +12,7 @@ const userCrud = require('./database/userCrud')
 const redis = require('./database/redis')
 
 app.get('/inserir/:nome/cpf/:cpf/email/:email/senha/:senha', userCrud.inserirUsuario);
+app.get('/visualizar/:cpf', userCrud.visualizarUsuario);
 app.get('/atualizar/:cpf/nome/:nome/email/:email/senha/:senha',userCrud.atualizarUsuario);
 app.get('/excluir/:cpf',userCrud.deletarUsuario);
 

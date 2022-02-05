@@ -15,6 +15,19 @@ const inserirUsuario = (request, response) => {
       }
     })
   };
+
+  const visualizarUsuario = (request, response) => {
+    const cpf = request.params.cpf;
+   
+    pool.query(`SELECT nome, email, senha FROM Usuario WHERE Usuario.cpf = '${cpf}'`, (error, results) => {
+      if (error) {
+        response.status(200).json(error);
+      }
+      else {
+        response.status(200).json(results.rows);
+      }
+    })
+  };
   
   const atualizarUsuario = (request, response) => {
     const nome = request.params.nome;
@@ -44,4 +57,4 @@ const inserirUsuario = (request, response) => {
     });
   };
 
-module.exports = {inserirUsuario, atualizarUsuario, deletarUsuario};
+module.exports = {inserirUsuario, visualizarUsuario, atualizarUsuario, deletarUsuario};
