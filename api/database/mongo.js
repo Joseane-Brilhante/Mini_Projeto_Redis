@@ -8,7 +8,7 @@ async function getPostagens(cpf) {
         const database = usuario.db(process.env.MONGO_DATABASE);
         const postagens = database.collection('postagens');
 
-        await postagens.find({}, {'_id': 0, 'cpf': cpf}).forEach(p => posts.push(p));
+        await postagens.find({'cpf': cpf}).forEach(p => posts.push(p));
     }
     finally {
         await usuario.close();
